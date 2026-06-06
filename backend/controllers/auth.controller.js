@@ -20,7 +20,7 @@ export const signup = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // 🔴 FIXED: Gender validation string ko safe lowercase bana diya
+        // Gender validation string ko safe lowercase bana diya
         const safeGender = gender ? gender.toLowerCase().trim() : "male";
 
         // PROFILE PIC
@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
         });
 
         if (newUser) {
-            // 🔴 FIXED: Pehle user ko safely database mein save karo, fir cookie and response bhejo
+            // Pehle user ko safely database mein save karo, fir cookie and response bhejo
             await newUser.save();
             generateTokenAndSetCookie(newUser._id, res);
 

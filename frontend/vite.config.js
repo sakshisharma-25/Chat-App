@@ -11,7 +11,7 @@ export default defineConfig({
         target: "http://127.0.0.1:5000", // Aapka backend port
         changeOrigin: true,
         secure: false,
-        // 🔴 COOKIES BREAKING FIX: Yeh lines cookies ko block nahi hone dengi
+        // COOKIES BREAKING FIX: Yeh lines cookies ko block nahi hone dengi
         configure: (proxy, _options) => {
           proxy.on('proxyReq', (proxyReq, req, _res) => {
             if (req.headers.cookie) {
