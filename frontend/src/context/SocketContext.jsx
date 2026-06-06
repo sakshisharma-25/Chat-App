@@ -17,7 +17,7 @@ export const SocketContextProvider = ({ children }) => {
         if (authUser) {
             const socketUrl = import.meta.env.MODE === "development" 
                 ? "http://localhost:5000" 
-                : "https://k2t.onrender.com"; 
+                : "https://chat-app-2k2t.onrender.com"; 
 
             const socket = io(socketUrl, {
                 query: {
@@ -27,7 +27,6 @@ export const SocketContextProvider = ({ children }) => {
 
             setSocket(socket);
 
-			// socket.on() is used to listen to the events. can be used both on client and servers side
             socket.on("getOnlineUsers", (users) => {
                 setOnlineUsers(users);
             });
