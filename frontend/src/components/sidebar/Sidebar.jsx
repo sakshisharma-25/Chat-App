@@ -1,19 +1,30 @@
 import SearchInput from "./SearchInput";
 import Conversations from "./Conversations";
 import LogoutButton from "./LogoutButton";
-
+import { Link } from "react-router-dom"; 
+import { BiUserCircle } from "react-icons/bi";
 const Sidebar = ({ onSelectChat }) => {
   return (
-    // md:w-[350px] se desktop par fix rahega, w-full se mobile par poori screen lega
-    // flex-1 aur overflow-auto se content screen se bahaar nahi bhaagega
     <div className="w-full md:w-[400px] border-r border-slate-700 p-4 flex flex-col h-full">
       <SearchInput />
       <div className="divider px-3 my-2"></div>
+      
       <div className="flex-1 overflow-auto">
         {/* Yahan hum conversations list pass karenge */}
         <Conversations onSelectChat={onSelectChat} />
       </div>
-      <div className="mt-auto pt-2">
+
+      {/* BOTTOM BUTTONS SECTION */}
+      <div className="mt-auto pt-2 border-t border-slate-700/50 flex items-center justify-between">
+      
+        <Link 
+          to='/profile' 
+          className='flex items-center gap-2 text-gray-400 hover:text-sky-400 transition-colors group cursor-pointer'
+        >
+          <BiUserCircle className='w-7 h-7 text-white group-hover:text-sky-400 transition-colors' />
+          <span className='text-sm font-medium hidden md:inline'>Edit Profile</span>
+        </Link>
+        
         <LogoutButton />
       </div>
     </div>

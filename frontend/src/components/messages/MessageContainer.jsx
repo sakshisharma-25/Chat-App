@@ -22,6 +22,7 @@ const MessageContainer = () => {
         <NoChatSelected authUser={authUser} />
       ) : (
         <>
+          {/* HEADER WITH PROFILE PICTURE */}
           <div className='bg-white/10 px-4 py-3 flex items-center gap-3 border-b border-white/10'>
             <button 
               onClick={() => setSelectedConversation(null)} 
@@ -29,9 +30,23 @@ const MessageContainer = () => {
             >
               <IoArrowBack />
             </button>
-            <div className="flex items-center gap-1">
-              <span className='label-text text-gray-400 text-sm'>To:</span>
-              <span className='text-white font-bold ml-1'>{selectedConversation.fullName}</span>
+
+            {/* Profile Picture */}
+            <div className='avatar'>
+              <div className='w-10 h-10 rounded-full overflow-hidden border border-sky-400 flex items-center justify-center bg-slate-800'>
+                <img
+                  src={selectedConversation?.profilePic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                  alt={selectedConversation?.fullName || "User Avatar"}
+                  className='w-full h-full object-cover'
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <span className='text-white font-bold text-base leading-tight'>
+                {selectedConversation.fullName}
+              </span>
+              <span className='text-gray-400 text-xs'>To: chat</span>
             </div>
           </div>
           
